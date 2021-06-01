@@ -1,7 +1,17 @@
-const server = require('http').createServer();
-const io = require('socket.io')(server);
-io.on('connection', client => {
-  client.on('event', data => { /* … */ });
-  client.on('disconnect', () => { /* … */ });
+const WebSocket = require("ws");
+
+const ws = new WebSocket("wss://ws-feed.pro.coinbase.com");
+
+ws.on("open", () => {
+  ws.send(
+    JSON.stringify({
+      type: "subscribe",
+      product_ids: ["ETH-USD"],
+      channels: ["ticker"],
+    })
+  );
 });
-server.listen(3000);
+
+ws.on("message", (data) => {
+  console.log(data);
+});
