@@ -8,7 +8,7 @@ ws.on("open", () => {
             {
                 "method": "SUBSCRIBE",
                 "params": [
-                    "btcusdt@aggTrade",
+                    "btcusdt@kline_5m",
                     "btcusdt@depth"
                 ],
                 "id": 1
@@ -22,8 +22,7 @@ ws.on("message", (data) => {
     console.log(data);
 });
 
-// https://github.com/binance-us/binance-official-api-docs/blob/master/web-socket-streams.md#detailed-stream-information
+// wss://stream.binance.us:9443/ws/btcusdt@kline_5m
 
-
-
-
+// Writes to txt file from command line
+// wscat -c wss://stream.binance.us:9443/ws/btcusdt@kline_5m | tee dataset.txt
