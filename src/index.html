@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer</title>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+    <h1>Trades</h1>
+    <div id="chart"></div>
+    <div id="trades"></div>
+
+    <script>
+        var binanceSocket = new WebSocket("wss://stream.binance.us:9443/ws/btcusdt@trade");
+
+        var tradeDiv = document.getElementById('trades')
+
+        // binanceSocket.onmessage = function(event) {
+        //     console.log(event.data);
+        //
+        //     var messageObject = JSON.parse(event.data)
+        //     tradeDiv.append(messageObject.p);
+        // }
+    </script>
+
+    <script src="chart.js">
+
+    </script>
+
+</body>
+</html>
